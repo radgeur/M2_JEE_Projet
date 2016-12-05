@@ -1,4 +1,4 @@
-package projet;
+package rezozio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

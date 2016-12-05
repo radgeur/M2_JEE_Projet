@@ -1,4 +1,4 @@
-package hello;
+package rezozio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +18,7 @@ public class Application implements CommandLineRunner  {
 		@Override
 		public void run(String... args) throws Exception {
 
-			
+
 
 		}
 
