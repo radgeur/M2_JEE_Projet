@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@RestController
 public class ProfilController {
 
+    @RequestMapping(value = "/connection", method = RequestMethod.POST)
+    public String connection()
+    {
+        return "/";
+    }
 }
