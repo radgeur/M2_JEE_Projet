@@ -18,11 +18,7 @@ public class Application implements CommandLineRunner  {
 		@Override
 		public void run(String... args) throws Exception {
 
-			repository.deleteAll();
-
-			// save a couple of Characters
-			repository.save(new Character("Alice", "Smith"));
-			repository.save(new Character("Bob", "Smith"));
+			
 
 		}
 
