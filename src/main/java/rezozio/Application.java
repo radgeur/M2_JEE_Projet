@@ -8,7 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner  {
 
-  	@Autowired
+  @Autowired
+	private MessageRepository messageRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -16,6 +18,14 @@ public class Application implements CommandLineRunner  {
 	@Override
 	public void run(String... args) throws Exception {
 
+    		// save a message
+    		messageRepository.save(new Message(1L, "Je suis le premier message"));
+
+
+System.out.println("--------------TEST-----------------------------");
+        for (Message m : messageRepository.findAll()) {
+        			System.out.println(m);
+        	}
 	}
 
 

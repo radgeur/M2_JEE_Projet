@@ -18,6 +18,7 @@ public class Message{
 
     public Message(Long idUser, String texteMessage) {
         this.idUser = idUser;
+        this.texteMessage = texteMessage;
     }
 
     @Override
