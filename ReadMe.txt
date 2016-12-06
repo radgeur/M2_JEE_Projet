@@ -1,3 +1,5 @@
+mvn eclipse:eclipse pour générer les dépéndances du pom.xml dans eclipse
+
 index.html -> Page d'accueil (Accueil du réseau social + Possibilité de se connecter + S'inscrire)
 login.html -> Page pour se connecter
 inscription.html -> Page pour s'inscrire : Formulaire
