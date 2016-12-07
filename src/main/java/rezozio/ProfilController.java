@@ -10,6 +10,6 @@ public class ProfilController {
     @PostMapping("/connection")
     public String connection(@ModelAttribute User user)
     {
-        return "/";
+        return "index";
     }
 }
