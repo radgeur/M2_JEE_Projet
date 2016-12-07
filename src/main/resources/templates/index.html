@@ -39,7 +39,11 @@
                       <img class="post-avatar" alt="Yoda&#x27;s avatar" height="48" width="48" src="images/yoda-avatar.png"/>
 
                       <div class="post-description">
-                          <p><a class="post-author" href="profils/vador.html">@Vador</a> : Stop this #DarkSide bullshit you should</p>
+                          <p><a class="post-author" href="profils/vador.html">@Vador</a> : 
+                          {{#message}}
+                          {{message.texteMessage}}
+                          {{/message}}
+                          </p>
                       </div>
 
                       <p class="post-meta">

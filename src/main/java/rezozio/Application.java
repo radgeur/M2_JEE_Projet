@@ -20,6 +20,8 @@ public class Application implements CommandLineRunner  {
 
     	// save a message
 		messageRepository.save(new Message(1L, "Je suis le premier message"));
+		messageRepository.save(new Message(1L, "message, je suis ton père"));
+		
 
 
 		System.out.println("--------------TEST-----------------------------");

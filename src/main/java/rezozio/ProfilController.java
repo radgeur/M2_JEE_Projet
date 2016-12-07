@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ProfilController {
 
-    @PostMapping("/connection")
+    @PostMapping("/logged.html")
     public String connection(@ModelAttribute User user)
     {
         return "index";

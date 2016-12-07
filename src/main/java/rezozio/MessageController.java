@@ -13,12 +13,12 @@ public class MessageController {
     @Autowired
     private MessageRepository mr;
 
-    @RequestMapping(value = "/")
+    @RequestMapping("/")
     public String index(Model model)
     {
         for(Message m : this.mr.findAll()){
           model.addAttribute("message", m);
         }
-        return "index.html";
+        return "index";
     }
 }
