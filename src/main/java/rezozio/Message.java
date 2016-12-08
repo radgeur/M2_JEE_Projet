@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
+import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Message{
@@ -14,12 +17,18 @@ public class Message{
     private Long idUser;
     private String texteMessage;
 
+
     protected Message() {}
 
     public Message(Long idUser, String texteMessage) {
         this.idUser = idUser;
         this.texteMessage = texteMessage;
     }
+
+    public Long getId(){
+      return this.id;
+    }
+
 
     @Override
     public String toString() {
@@ -28,11 +37,11 @@ public class Message{
                 id, idUser, texteMessage);
     }
 
-    public Long getidUser(){
+    public Long getIdUser(){
       return idUser;
     }
 
-    public void setidUser(Long idUser){
+    public void setIdUser(Long idUser){
       this.idUser = idUser;
     }
 

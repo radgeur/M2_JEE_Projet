@@ -23,7 +23,7 @@
           <nav class="nav">
               <ul class="nav-list">
                   <li class="nav-item">
-                      <a class="pure-button" href="login.html">Login</a></li>
+                      <a class="pure-button" href="/login.html">Login</a></li>
               </ul>
           </nav>
       </div>
@@ -33,23 +33,24 @@
       <div>
 
           <div class="posts">
-              <h1 class="content-subhead">Derniers messages</h1>
+              <h1 class="content-subhead">{{page}}</h1>
               <div>
 
                 {{#message}}
                   <section class="post">
                       <img class="post-avatar" alt="Yoda&#x27;s avatar" height="48" width="48" src="images/yoda-avatar.png"/>
                       <div class="post-description">
-                          <p><a class="post-author" href="profils/vador.html">@Vador</a> :
+                          <p><a class="post-author" href="/profils/{{user}}.html">@{{user}}</a> :
                           {{texteMessage}}
                           </p>
                       </div>
 
                       <p class="post-meta">
-                          21 minutes ago -
-                          By <a class="post-author" href="profils/yoda.html">Yoda</a>
+                          By <a class="post-author" href="/profils/{{user}}.html">{{user}}</a>
                           under
-                          <a class="post-category post-category-js" href="hashtags/DarkSide.html">#DarkSide</a>
+                          {{#listHT}}
+                          <a class="post-category post-category-js" href="/hashtags/{{texteHashtag}}.html">#{{texteHashtag}}</a>
+                          {{/listHT}}
                       </p>
                   </section>
                 {{/message}}

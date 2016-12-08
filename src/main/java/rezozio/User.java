@@ -39,6 +39,10 @@ public class User{
                 id, login, email);
     }
 
+    public Long getId(){
+      return id;
+    }
+
     public String getLogin() {
 		return login;
 	}
