@@ -35,14 +35,13 @@
           <div class="posts">
               <h1 class="content-subhead">Derniers messages</h1>
               <div>
+
+                {{#message}}
                   <section class="post">
                       <img class="post-avatar" alt="Yoda&#x27;s avatar" height="48" width="48" src="images/yoda-avatar.png"/>
-
                       <div class="post-description">
-                          <p><a class="post-author" href="profils/vador.html">@Vador</a> : 
-                          {{#message}}
-                          {{message.texteMessage}}
-                          {{/message}}
+                          <p><a class="post-author" href="profils/vador.html">@Vador</a> :
+                          {{texteMessage}}
                           </p>
                       </div>
 
@@ -53,6 +52,8 @@
                           <a class="post-category post-category-js" href="hashtags/DarkSide.html">#DarkSide</a>
                       </p>
                   </section>
+                {{/message}}
+
               </div>
           </div>
       </div>

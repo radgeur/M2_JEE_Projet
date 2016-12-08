@@ -16,9 +16,9 @@ public class MessageController {
     @RequestMapping("/")
     public String index(Model model)
     {
-        for(Message m : this.mr.findAll()){
-          model.addAttribute("message", m);
-        }
+
+        model.addAttribute("message", this.mr.findAll());
+
         return "index";
     }
 }
