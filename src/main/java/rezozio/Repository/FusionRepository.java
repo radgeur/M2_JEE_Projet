@@ -1,8 +1,10 @@
-package rezozio;
+package rezozio.Repository;
 
 import java.util.ArrayList;
 
 import org.springframework.data.repository.CrudRepository;
+
+import rezozio.Entity.Fusion;
 
 public interface FusionRepository extends CrudRepository<Fusion, Long> {
 

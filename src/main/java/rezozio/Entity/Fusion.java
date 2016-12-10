@@ -1,4 +1,4 @@
-package rezozio;
+package rezozio.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

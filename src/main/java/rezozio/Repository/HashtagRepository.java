@@ -1,6 +1,8 @@
-package rezozio;
+package rezozio.Repository;
 
 import org.springframework.data.repository.CrudRepository;
+
+import rezozio.Entity.Hashtag;
 
 public interface HashtagRepository extends CrudRepository<Hashtag, Long> {
 

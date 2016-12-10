@@ -1,8 +1,8 @@
-package rezozio;
-
-import java.util.List;
+package rezozio.Repository;
 
 import org.springframework.data.repository.CrudRepository;
+
+import rezozio.Entity.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 

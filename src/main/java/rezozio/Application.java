@@ -1,11 +1,20 @@
 package rezozio;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.util.List;
-import java.util.ArrayList;
+
+import rezozio.Entity.Fusion;
+import rezozio.Entity.Hashtag;
+import rezozio.Entity.Message;
+import rezozio.Entity.User;
+import rezozio.Repository.FusionRepository;
+import rezozio.Repository.HashtagRepository;
+import rezozio.Repository.MessageRepository;
+import rezozio.Repository.UserRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner  {

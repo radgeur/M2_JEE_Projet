@@ -1,12 +1,9 @@
-package rezozio;
+package rezozio.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
-import java.util.ArrayList;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Message{

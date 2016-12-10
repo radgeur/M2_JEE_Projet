@@ -1,13 +1,23 @@
-package rezozio;
+package rezozio.Controller;
 
+
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import java.util.List;
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import rezozio.Entity.Fusion;
+import rezozio.Entity.Hashtag;
+import rezozio.Entity.Message;
+import rezozio.Entity.MessageAffiche;
+import rezozio.Entity.User;
+import rezozio.Repository.FusionRepository;
+import rezozio.Repository.HashtagRepository;
+import rezozio.Repository.MessageRepository;
+import rezozio.Repository.UserRepository;
 
 @Controller
 public class MessageController {
@@ -25,7 +35,7 @@ public class MessageController {
     public String index(Model model)
     {
         //Sur l'index,on affiche la liste de tous les messages
-        //Pour chaque message, on recupère l'User, le message, les hashtags du message et on les affiche
+        //Pour chaque message, on recupère l'User, le message, les hashtags du message et on les affichent
         ArrayList<MessageAffiche> list = new ArrayList<MessageAffiche>();
 
         for(Message m : this.mr.findAll()) {

@@ -1,8 +1,10 @@
-package rezozio;
+package rezozio.Repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+
+import rezozio.Entity.Message;
 
 public interface MessageRepository extends CrudRepository<Message, Long> {
 

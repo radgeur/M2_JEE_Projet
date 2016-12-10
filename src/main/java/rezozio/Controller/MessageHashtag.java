@@ -1,6 +1,8 @@
-package rezozio;
+package rezozio.Controller;
 
 import java.util.ArrayList;
+
+import rezozio.Entity.Hashtag;
 
 //Classe représentant un message avec la liste de ses hashtags
 

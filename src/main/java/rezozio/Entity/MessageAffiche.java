@@ -1,7 +1,6 @@
-package rezozio;
+package rezozio.Entity;
 
 
-import java.util.List;
 import java.util.ArrayList;
 
 
