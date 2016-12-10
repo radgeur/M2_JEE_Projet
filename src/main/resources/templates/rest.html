@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Rézozio</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <a href="/restData/users">Données utilisateurs</a>
+    </br>
+    <a href="/restData/messages">Liste des messages</a>
+    </br>
+    <a href="/restData/hashtags">Liste des hashtags</a>
+    </br>
+    <a href="/restData/messagesHashtags">Liste des messages avec leurs hashtags</a>
+    </br></br>
+
+
+    <h2> Liste des utilisateurs </h2>
+    {{#users}}
+    <div>
+      <a href="/restData/user?login={{login}}">Informations de {{login}}</a>
+      </br>
+      <a href="/restData/messagesUser?login={{login}}">Messages de {{login}}</a>
+      </br>
+      <a href="/restData/hashtagsUser?login={{login}}">Hashtags utilisés par {{login}}</a>
+      </br></br>
+    </div>
+    {{/users}}
+
+    <h2> Liste des Hashtags </h2>
+    {{#hashtags}}
+    <div>
+      <a href="/restData/hashtag?hashtag={{texteHashtag}}">Messages contenant le hashtag : {{texteHashtag}}</a>
+      </br>
+    </div>
+    {{/hashtags}}
+
+    </br>
+</body>
+</html>
