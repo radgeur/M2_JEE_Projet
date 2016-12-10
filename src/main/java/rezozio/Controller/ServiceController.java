@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import rezozio.Entity.Fusion;
 import rezozio.Entity.Hashtag;
 import rezozio.Entity.Message;
+import rezozio.Entity.MessageHashtag;
 import rezozio.Entity.User;
 import rezozio.Repository.FusionRepository;
 import rezozio.Repository.HashtagRepository;

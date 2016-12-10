@@ -33,9 +33,25 @@ public class ProfilController {
     @Autowired
     private HashtagRepository hr;
 
+    @PostMapping("/index.html")
+    public String connection(@ModelAttribute User user, Model model){
+    	User userFind = ur.findByLogin(user.getLogin());
+    	if(userFind != null)
+    		if(user.getPassword().equals(userFind.getPassword()))
+    			return "index";
+    		else {
+    			//model.addAttribute("message", "Mot de passe incorrect.");
+        		return "login";
+    		}
+    	else {
+    		//model.addAttribute("message", "Login inexistant.");
+    		return "login";
+    	}
+    }
+    
     //Appelé lorsque l'utilisateur se connecte OU lorsqu'il envoi un message
     @PostMapping("/logged.html")
-    public String connection(@ModelAttribute User user, @ModelAttribute Message message,Model model)
+    public String publishedMessage(@ModelAttribute User user, @ModelAttribute Message message,Model model)
     {
         //Si la page est appelé lors de la connexion -> On a les infos dans user
         if(user.getLogin() != null){
@@ -154,19 +170,17 @@ public class ProfilController {
        //Pour que la boucle while se termine bien
        message += " ";
 
-       System.out.println("teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeseeeeeeeeeeeeeeeeee----------------------------------------------------------");
-		     for(int i = 0; i < message.length() ; i++){
-		       tmp="";
-		       if(message.charAt(i) == '#'){
-		    	   j = i+1;
-		    	   while(message.charAt(j) != ' '){
-		    		   tmp += message.charAt(j);
-		    		   j++;
-		    	   }
-		    	   list.add(new Hashtag(tmp));
-		       }
-		     }
-         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------------------------------------");
+        for(int i = 0; i < message.length() ; i++){
+        tmp="";
+        if(message.charAt(i) == '#'){
+           j = i+1;
+           while(message.charAt(j) != ' '){
+        	   tmp += message.charAt(j);
+        	   j++;
+           }
+           list.add(new Hashtag(tmp));
+        }
+        }
       return list;
    }
 
