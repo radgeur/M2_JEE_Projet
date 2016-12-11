@@ -23,13 +23,12 @@
           <nav class="nav">
               <ul class="nav-list">
                   <li class="nav-item">
-                  		<a class="pure-button" href="/login.html">Login</a>
+                      <a class="pure-button" href="/">Retour à l'accueil</a>
                   </li>
                   <br />
                   <li class="nav-item">
-                  		<a class="pure-button" href="/inscription.html">S'inscrire</a>
+                      <a class="pure-button" href="/login.html">Login</a>
                   </li>
-                  
               </ul>
           </nav>
       </div>
@@ -39,27 +38,19 @@
       <div>
 
           <div class="posts">
-              <h1 class="content-subhead">Derniers messages</h1>
+              <h1 class="content-subhead">Inscription</h1>
               <div>
 
-                {{#message}}
-                  <section class="post">
-                      <img class="post-avatar" alt="Yoda&#x27;s avatar" height="48" width="48" src="images/yoda-avatar.png"/>
-                      <div class="post-description">
-                          <p><a class="post-author" href="/profils/{{user}}.html">@{{user}}</a> :
-                          {{texteMessage}}
-                          </p>
-                      </div>
-
-                      <p class="post-meta">
-                          By <a class="post-author" href="/profils/{{user}}.html">{{user}}</a>
-                          under
-                          {{#listHT}}
-                          <a class="post-category post-category-js" href="/hashtags/{{texteHashtag}}.html">#{{texteHashtag}}</a>
-                          {{/listHT}}
-                      </p>
-                  </section>
-                {{/message}}
+                <form action="inscription" method="POST">
+			        <label for="login"> Login : </label> <input name="login" type="text" id="login"/> </br>
+			        <label for="password"> Password : </label> <input name="password" type="text" id="password"/> </br>
+			        <label for="email"> Adresse e-mail : </label> <input name="email" type="text" id="email"/> </br>
+			        <label for="idFacebook"> Login Facebook : </label> <input name="idFacebook" type="text" id="idFacebook"/> </br>
+			        <label for="idTwitter"> Login Twitter : </label> <input name="idTwitter" type="text" id="idTwitter"/> </br>
+			        <label for="idLinkedin"> Login Linkedin : </label> <input name="idLinkedin" type="text" id="idLinkedin"/> </br>
+			        <button type="submit" value="Submit" id="Submit" class="btn btn-­primary">Valider</button></br>
+			    </form>
+			    {{message}}
 
               </div>
           </div>
@@ -68,3 +59,4 @@
 </div>
 </body>
 </html>
+

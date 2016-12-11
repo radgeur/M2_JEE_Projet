@@ -36,9 +36,15 @@ public class ProfilController {
     //Lors de l'appui sur le bouton "login"
     @RequestMapping("/login.html")
     public String loginForm(Model model){
-    	model.addAttribute("page", "Connexion");
     	model.addAttribute("message", "");
     	return "login";
+    }
+    
+    //Lors de l'appui sur le bouton "inscription"
+    @RequestMapping("/inscription.html")
+    public String inscriptionForm(Model model){
+    	model.addAttribute("message", " ");
+    	return "inscription";
     }
     
     //Lors de la validation du formulaire de login
@@ -55,6 +61,24 @@ public class ProfilController {
     	else {
     		model.addAttribute("message", "Login inexistant.");
     		return "login";
+    	}
+    }
+    
+    //Lors de la validation du formulaire d'inscription
+    @PostMapping("/inscription")
+    public String inscription(@ModelAttribute User user, Model model) {
+    	User userFind = ur.findByLogin(user.getLogin());
+    	if(user.getLogin().equals("") || user.getPassword().equals("")) {
+    		model.addAttribute("message", "Les champs login et password ne peuvent pas être vide.");
+    		return "inscription";
+    	}
+    	if(userFind != null) {
+    		model.addAttribute("message", "Login déjà existant");
+    		return "inscription";
+    	}
+    	else {
+    		ur.save(user);
+    		return "/profils/" + user.getLogin();
     	}
     }
     
@@ -165,7 +189,6 @@ public class ProfilController {
         }
 
         model.addAttribute("message", list);
-        model.addAttribute("page", "Derniers messages");
 
         return "profil";
 
