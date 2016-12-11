@@ -33,18 +33,27 @@ public class ProfilController {
     @Autowired
     private HashtagRepository hr;
 
-    @PostMapping("/index.html")
+    //Lors de l'appui sur le bouton "login"
+    @RequestMapping("/login.html")
+    public String loginForm(Model model){
+    	model.addAttribute("page", "Connexion");
+    	model.addAttribute("message", "");
+    	return "login";
+    }
+    
+    //Lors de la validation du formulaire de login
+    @PostMapping("/connection")
     public String connection(@ModelAttribute User user, Model model){
     	User userFind = ur.findByLogin(user.getLogin());
     	if(userFind != null)
     		if(user.getPassword().equals(userFind.getPassword()))
-    			return "index";
+    			return "/profils/" + user.getLogin();
     		else {
-    			//model.addAttribute("message", "Mot de passe incorrect.");
+    			model.addAttribute("message", "Mot de passe incorrect.");
         		return "login";
     		}
     	else {
-    		//model.addAttribute("message", "Login inexistant.");
+    		model.addAttribute("message", "Login inexistant.");
     		return "login";
     	}
     }
