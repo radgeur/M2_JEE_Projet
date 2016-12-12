@@ -14,7 +14,7 @@ Liste des pages :
 
 Consulter l'accueil du réseau social : index.html
 
-Ecrire un message + liste des messages : loggedIn.html
+Ecrire un message + liste des messages : logged.html
 
 S'identifier à l'application : login.html
 
