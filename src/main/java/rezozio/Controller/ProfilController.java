@@ -40,14 +40,14 @@ public class ProfilController {
     	model.addAttribute("message", "");
     	return "login";
     }
-    
+
     //Lors de l'appui sur le bouton "inscription"
     @RequestMapping("/inscription.html")
     public String inscriptionForm(Model model){
     	model.addAttribute("message", " ");
     	return "inscription";
     }
-    
+
     //Lors de la validation du formulaire de login
     @PostMapping("/connection")
     public String connection(@ModelAttribute User user, Model model){
@@ -55,7 +55,7 @@ public class ProfilController {
     	if(userFind != null)
     		if(user.getPassword().equals(userFind.getPassword())) {
     			Application.userConnected = userFind;
-    			return "redirect:/profils/" + user.getLogin();    			
+    			return "redirect:/profils/" + user.getLogin();
     		}
     		else {
     			model.addAttribute("message", "Mot de passe incorrect.");
@@ -66,7 +66,7 @@ public class ProfilController {
     		return "login";
     	}
     }
-    
+
     //Lors de la validation du formulaire d'inscription
     @PostMapping("/inscription")
     public String inscription(@ModelAttribute User user, Model model) {
@@ -85,7 +85,7 @@ public class ProfilController {
     		return "redirect:/profils/" + user.getLogin();
     	}
     }
-    
+
     //Lors de la déconnection
     @RequestMapping(value = "/disconnection")
     public String disconnection(Model model){
@@ -94,21 +94,17 @@ public class ProfilController {
     	model.addAttribute("message", "coucou");*/
     	return "redirect:/";
     }
-    
+
     //Appelé lorsque l'utilisateur se connecte OU lorsqu'il envoi un message
     @PostMapping("/logged.html")
-    public String publishedMessage(@ModelAttribute User user, @ModelAttribute Message message,Model model)
+    public String publishedMessage( @ModelAttribute Message message,Model model)
     {
-        //Si la page est appelé lors de la connexion -> On a les infos dans user
-        if(user.getLogin() != null){
-          //On vérifie que les identifiants lors du login sont bons
 
-        } else {
-        //Sinon lorsque l'utilisateur envoi un message -> On a les infos dans message
+        model.addAttribute("connected", true);
+        model.addAttribute("login", Application.userConnected.getLogin());
 
           //On crée le message et on l'enregistre en BDD
-          //Premier paramètre = "ID DE LUSER DE LA SESSION" -> Il faudra modifier
-          Message newMessage = new Message(1L,message.gettexteMessage());
+          Message newMessage = new Message(Application.userConnected.getId(),message.gettexteMessage());
           this.mr.save(newMessage);
 
           //On recupère les hashtags du message
@@ -127,7 +123,7 @@ public class ProfilController {
             this.fr.save(f);
           }
 
-        }
+
           //Pour chaque message, on recupère l'User, le message, les hashtags du message et on les affiche
           ArrayList<MessageAffiche> list = new ArrayList<MessageAffiche>();
 
@@ -155,20 +151,19 @@ public class ProfilController {
           }
 
           //On passe au model en attributs la liste des messages avec pour chaque message, l'user et les hashtags
-          // LOGIN DE LA SESSION ICI-> Il faudra modifier
-          model.addAttribute("login", "LOGIN DE LA SESSION ICI");
+          model.addAttribute("login", Application.userConnected.getLogin());
           model.addAttribute("message", list);
           model.addAttribute("page", "Derniers messages");
 
-        return "logged";
+        return "index";
     }
 
 
     @RequestMapping("profils/{userName}")
     public String profil(Model model, @PathVariable("userName") String userName){
-    	if(Application.userConnected != null) 
+    	if(Application.userConnected != null)
     		model.addAttribute("connected", true);
-    	    	
+
         //On recupère les informations de l'user
         User user = this.ur.findByLogin(userName);
 

@@ -39,9 +39,9 @@ public class MessageController {
     		model.addAttribute("connected", true);
     		model.addAttribute("login", Application.userConnected.getLogin());
     	}
-    	else 
+    	else
     		model.addAttribute("login", "");
-    	
+
         //Sur l'index,on affiche la liste de tous les messages
         //Pour chaque message, on recupère l'User, le message, les hashtags du message et on les affichent
         ArrayList<MessageAffiche> list = new ArrayList<MessageAffiche>();
@@ -82,9 +82,9 @@ public class MessageController {
     		model.addAttribute("connected", true);
     		model.addAttribute("login", Application.userConnected.getLogin());
     	}
-    	else 
+    	else
     		model.addAttribute("login", "");
-    	
+
       //Liste des messages qui seront affichés
       ArrayList<MessageAffiche> list = new ArrayList<MessageAffiche>();
 
@@ -126,5 +126,18 @@ public class MessageController {
       model.addAttribute("page", "Hashtag : "+HTName);
 
       return "hashtag";
+    }
+
+    @RequestMapping("/data")
+    public String data(Model model)
+    {
+      //Récupération de la liste des Users
+      model.addAttribute("users",this.ur.findAll());
+      //Récupération de la liste des hashtags
+      model.addAttribute("hashtags", this.hr.findAll());
+
+      return "rest";
+
+
     }
 }
