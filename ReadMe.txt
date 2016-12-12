@@ -1,13 +1,13 @@
 mvn eclipse:eclipse pour générer les dépéndances du pom.xml dans eclipse
 
-index.html -> Page d'accueil (Accueil du réseau social + Possibilité de se connecter + S'inscrire)
+Liste des urls :
+
+index.html -> Page d'accueil du réseau
 login.html -> Page pour se connecter
 inscription.html -> Page pour s'inscrire : Formulaire
-loggedIn.html -> Page affiché lorsque l'utilisateur est connecté -> Liste des messages + champ pour ajouter un message
-		  -> Bouton pour éditer le profil utilisateur
+logged.html -> Page appelé quand l'utilisateur envoi un message
 profils/user.html -> Affichage du profil d'un user et de ses messages
 hashtags/nomHashTag.html  -> Affichage des messages en rapport avec ce hashTags
-edit_profile.html -> Editer son profil (il faut être bien entendu logger)
 
 
 Liste des pages :
@@ -33,4 +33,13 @@ BDD :
 - User : id, pseudo=login, password, email, photo, idtweeter, idfb, idLinkedin
 - Message : id, idUser, texteMessage
 - Hashtag : id, texteHashTags
-- Fusion : id, idMessage, idHashta
+- Fusion : id, idMessage, idHashtag
+
+Gestion de l'API de web services REST (accessible à l'url /data) :
+	- /restData/users : Données utilisateurs
+	- /restData/messages : Données messages
+ 	- /restData/hashtags : Données hashtags
+	- /restData/messagesHashtags : Données messages avec leurs hashtags
+	- /restData/user?login=login : Informations d'un utilisateur (login passé en paramètre)
+	- /restData/messagesUser?login=login : Messages d'un utilisateur (login passé en paramètre)
+	- /restData/hashtag?hashtag=Nom : Liste des messages contenant le hashtag (nom passé en paramètre)
