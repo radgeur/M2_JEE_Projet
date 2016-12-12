@@ -155,7 +155,7 @@ public class ProfilController {
           model.addAttribute("message", list);
           model.addAttribute("page", "Derniers messages");
 
-        return "index";
+        return "redirect:/";
     }
 
 
