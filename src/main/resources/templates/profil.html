@@ -21,10 +21,26 @@
           <h2 class="brand-tagline">Un blog</h2>
 
           <nav class="nav">
-              <ul class="nav-list">
+          	 <ul class="nav-list">
+          		{{^connected}}             
                   <li class="nav-item">
-                      <a class="pure-button" href="/login.html">Login</a></li>
-              </ul>
+                  		<a class="pure-button" href="/login.html">Login</a>
+                  </li>
+                  <br />
+                  <li class="nav-item">
+                  		<a class="pure-button" href="/inscription.html">S'inscrire</a>
+                  </li>  
+          		{{/connected}}
+         		 {{#connected}}
+                  <li class="nav-item">
+                  		<a class="pure-button" href="/disconnection">Déconnection</a>
+                  </li>
+          		{{/connected}}
+          		<br />
+           		<li class="nav-item">
+                      <a class="pure-button" href="/">Retour à l'accueil</a>
+                 </li>
+            </ul>
           </nav>
       </div>
   </div>
@@ -65,7 +81,6 @@
 
   <div class="content pure-u-1 pure-u-md-3-4">
       <div>
-
           <div class="posts">
               <h1 class="content-subhead">Derniers messages</h1>
               <div>

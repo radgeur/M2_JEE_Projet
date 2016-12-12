@@ -27,6 +27,8 @@ public class Application implements CommandLineRunner  {
     private HashtagRepository hashtagRepository;
     @Autowired
     private FusionRepository fusionRepository;
+    
+    public static User userConnected = null;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);

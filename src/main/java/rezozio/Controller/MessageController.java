@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import rezozio.Application;
 import rezozio.Entity.Fusion;
 import rezozio.Entity.Hashtag;
 import rezozio.Entity.Message;
@@ -34,6 +35,13 @@ public class MessageController {
     @RequestMapping("/")
     public String index(Model model)
     {
+    	if(Application.userConnected != null) {
+    		model.addAttribute("connected", true);
+    		model.addAttribute("login", Application.userConnected.getLogin());
+    	}
+    	else 
+    		model.addAttribute("login", "");
+    	
         //Sur l'index,on affiche la liste de tous les messages
         //Pour chaque message, on recupère l'User, le message, les hashtags du message et on les affichent
         ArrayList<MessageAffiche> list = new ArrayList<MessageAffiche>();
@@ -63,7 +71,6 @@ public class MessageController {
 
         //On passe au model en attributs la liste des messages avec pour chaque message, l'user et les hashtags
         model.addAttribute("message", list);
-        model.addAttribute("page", "Derniers messages");
 
         return "index";
     }
@@ -71,6 +78,13 @@ public class MessageController {
 
     @RequestMapping("hashtags/{hashtagName}")
     public String hashtags(Model model, @PathVariable("hashtagName") String HTName){
+    	if(Application.userConnected != null) {
+    		model.addAttribute("connected", true);
+    		model.addAttribute("login", Application.userConnected.getLogin());
+    	}
+    	else 
+    		model.addAttribute("login", "");
+    	
       //Liste des messages qui seront affichés
       ArrayList<MessageAffiche> list = new ArrayList<MessageAffiche>();
 

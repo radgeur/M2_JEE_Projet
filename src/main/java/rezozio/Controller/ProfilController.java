@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import rezozio.Application;
 import rezozio.Entity.Fusion;
 import rezozio.Entity.Hashtag;
 import rezozio.Entity.Message;
@@ -52,8 +53,10 @@ public class ProfilController {
     public String connection(@ModelAttribute User user, Model model){
     	User userFind = ur.findByLogin(user.getLogin());
     	if(userFind != null)
-    		if(user.getPassword().equals(userFind.getPassword()))
-    			return "/profils/" + user.getLogin();
+    		if(user.getPassword().equals(userFind.getPassword())) {
+    			Application.userConnected = userFind;
+    			return "redirect:/profils/" + user.getLogin();    			
+    		}
     		else {
     			model.addAttribute("message", "Mot de passe incorrect.");
         		return "login";
@@ -78,8 +81,18 @@ public class ProfilController {
     	}
     	else {
     		ur.save(user);
-    		return "/profils/" + user.getLogin();
+    		Application.userConnected = user;
+    		return "redirect:/profils/" + user.getLogin();
     	}
+    }
+    
+    //Lors de la déconnection
+    @RequestMapping(value = "/disconnection")
+    public String disconnection(Model model){
+    	Application.userConnected = null;
+    	/*model.addAttribute("login", "");
+    	model.addAttribute("message", "coucou");*/
+    	return "redirect:/";
     }
     
     //Appelé lorsque l'utilisateur se connecte OU lorsqu'il envoi un message
@@ -153,6 +166,9 @@ public class ProfilController {
 
     @RequestMapping("profils/{userName}")
     public String profil(Model model, @PathVariable("userName") String userName){
+    	if(Application.userConnected != null) 
+    		model.addAttribute("connected", true);
+    	    	
         //On recupère les informations de l'user
         User user = this.ur.findByLogin(userName);
 

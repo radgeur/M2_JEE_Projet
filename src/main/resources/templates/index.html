@@ -21,6 +21,7 @@
           <h2 class="brand-tagline">Un blog</h2>
 
           <nav class="nav">
+          {{^connected}}
               <ul class="nav-list">
                   <li class="nav-item">
                   		<a class="pure-button" href="/login.html">Login</a>
@@ -28,9 +29,20 @@
                   <br />
                   <li class="nav-item">
                   		<a class="pure-button" href="/inscription.html">S'inscrire</a>
-                  </li>
-                  
+                  </li>  
               </ul>
+          {{/connected}}
+          {{#connected}}
+          	 <ul class="nav-list">
+                  <li class="nav-item">
+                  		<a class="pure-button" href="/profils/{{login}}">Editer mon profil</a>
+                  </li>
+                  <br />
+                  <li class="nav-item">
+                  		<a class="pure-button" href="/disconnection">Déconnection</a>
+                  </li> 
+             </ul>
+          {{/connected}}
           </nav>
       </div>
   </div>
